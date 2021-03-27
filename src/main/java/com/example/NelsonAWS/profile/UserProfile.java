@@ -1,20 +1,39 @@
 package com.example.NelsonAWS.profile;
 
+import java.util.Optional;
 import java.util.UUID;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 public class UserProfile {
 
-	private UUID userProfileId;
-	
-	private String username;
-	
-	private String userProfileImageLink; //s3 key
+	  private final UUID userProfileId;
+	    private final String username;
+	    private String userProfileImageLink; // S3 key
+
+	    public UserProfile(UUID userProfileId,
+	                       String username,
+	                       String userProfileImageLink) {
+	        this.userProfileId = userProfileId;
+	        this.username = username;
+	        this.userProfileImageLink = userProfileImageLink;
+	    }
+
+	    public UUID getUserProfileId() {
+	        return userProfileId;
+	    }
+
+	    public String getUsername() {
+	        return username;
+	    }
+
+	    public Optional<String> getUserProfileImageLink() {
+	        return Optional.ofNullable(userProfileImageLink);
+	    }
+
+	    public void setUserProfileImageLink(String userProfileImageLink) {
+	        this.userProfileImageLink = userProfileImageLink;
+	    }
 
 	@Override
 	public boolean equals(Object obj) {
